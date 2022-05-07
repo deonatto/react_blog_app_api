@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/users');
 dotenv.config();
 
 // allow json object inside body
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URL)
     });
 
 app.use('/api/auth', authRoute);
+app.use('/api/user', userRoute);
 app.listen('5000', ()=>{
     console.log('backend running');
 });
